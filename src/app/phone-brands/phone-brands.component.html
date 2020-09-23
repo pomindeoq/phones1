@@ -1,5 +1,7 @@
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let brand of phoneBrands">
-    <h3>{{ brand }}</h3>
+  <li class="list-group-item">
+    <h3>{{ phoneBrand.headline }}</h3>
+    <p>{{ phoneBrand.headline }}</p>
+    <p *ngFor="let model of phoneModels">{{ model.displayName }}</p>
   </li>
 </ul>

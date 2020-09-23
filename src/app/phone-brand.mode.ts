@@ -1,5 +1,7 @@
+import { Option } from './option';
+
 export interface PhoneBrand {
-  displayImageUrl: string;
-  displayName: string;
   id: string;
+  headline: string;
+  options: Option[];
 }

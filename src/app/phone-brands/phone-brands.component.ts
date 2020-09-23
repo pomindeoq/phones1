@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhoneService } from '../phone.service';
 import { map } from 'rxjs/operators';
 import { PhoneBrand } from '../phone-brand.mode';
+import { Option } from '../option';
 
 @Component({
   selector: 'app-phone-brands',
@@ -11,31 +12,19 @@ import { PhoneBrand } from '../phone-brand.mode';
 export class PhoneBrandsComponent implements OnInit {
   constructor(private phoneService: PhoneService) {}
 
-  brands: any = [];
-
   title = [];
 
   ngOnInit(): void {
     this.getPhoneBrands();
   }
 
-  phoneBrands = [];
+  phoneModels: Option[] = [];
+  phoneBrand: PhoneBrand;
 
   getPhoneBrands() {
-    this.phoneService
-      .getPhoneBrands()
-      .pipe(
-        map((responseData) => {
-          const Brands = [];
-          for (const key in responseData) {
-            Brands.push(responseData[key]);
-          }
-          return Brands;
-        })
-      )
-      .subscribe((brands) => {
-        this.phoneBrands = brands;
-        brands = this.phoneBrands[2];
-      });
+    this.phoneService.getPhoneBrands().subscribe((brands: PhoneBrand) => {
+      this.phoneBrand = brands;
+      this.phoneModels = this.phoneBrand.options;
+    });
   }
 }
