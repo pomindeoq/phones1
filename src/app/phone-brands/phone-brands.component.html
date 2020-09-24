@@ -1,7 +1,21 @@
-<ul class="list-group">
-  <li class="list-group-item">
-    <h3>{{ phoneBrand.headline }}</h3>
-    <p>{{ phoneBrand.headline }}</p>
-    <p *ngFor="let model of phoneModels">{{ model.displayName }}</p>
-  </li>
-</ul>
+<div class="title">
+  <h2>{{ title }}</h2>
+</div>
+
+<div class="row">
+  <div
+    (click)="onSelectBrand()"
+    *ngFor="let model of phoneModels"
+    class="card col-xl-2"
+    style="width: 10rem"
+  >
+    <img
+      class="card-img-top responsive"
+      src="{{ model.displayImageUrl }}"
+      alt="{{ model.id }}"
+    />
+    <div class="card-body">
+      <p class="card-text">{{ model.displayName }}</p>
+    </div>
+  </div>
+</div>

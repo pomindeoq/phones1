@@ -12,7 +12,7 @@ import { Option } from '../option';
 export class PhoneBrandsComponent implements OnInit {
   constructor(private phoneService: PhoneService) {}
 
-  title = [];
+  title = '';
 
   ngOnInit(): void {
     this.getPhoneBrands();
@@ -21,10 +21,13 @@ export class PhoneBrandsComponent implements OnInit {
   phoneModels: Option[] = [];
   phoneBrand: PhoneBrand;
 
+  onSelectBrand() {}
+
   getPhoneBrands() {
     this.phoneService.getPhoneBrands().subscribe((brands: PhoneBrand) => {
       this.phoneBrand = brands;
       this.phoneModels = this.phoneBrand.options;
+      this.title = this.phoneBrand.headline;
     });
   }
 }
