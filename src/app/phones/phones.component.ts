@@ -11,11 +11,13 @@ export class PhonesComponent implements OnInit {
 
   phones = [];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getPhones();
+  }
 
   getPhones() {
     this.phoneService.getPhones().subscribe((phones) => {
-      console.log(phones[2]);
+      this.phones = phones;
     });
   }
 }

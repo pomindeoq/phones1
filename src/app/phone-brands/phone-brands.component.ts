@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { PhoneService } from '../phone.service';
 import { map } from 'rxjs/operators';
 import { PhoneBrand } from '../phone-brand.mode';
@@ -21,7 +21,7 @@ export class PhoneBrandsComponent implements OnInit {
   phoneModels: Option[] = [];
   phoneBrand: PhoneBrand;
 
-  onSelectBrand() {}
+  onSelectBrand(id: string) {}
 
   getPhoneBrands() {
     this.phoneService.getPhoneBrands().subscribe((brands: PhoneBrand) => {

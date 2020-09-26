@@ -4,8 +4,8 @@
 
 <div class="row">
   <div
-    (click)="onSelectBrand()"
-    *ngFor="let model of phoneModels"
+    (click)="onSelectBrand(model.id)"
+    *ngFor="let model of phoneModels; let i = index"
     class="card col-xl-2"
     style="width: 10rem"
   >
